@@ -1,0 +1,43 @@
+/**************************
+      Download Result
+**************************/
+.mdDownloadResult {
+    display: flex;
+    flex-direction: column;
+
+    &.mdContained {
+        border: 1px solid $grey;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        text-align: center;
+
+        .mdValue {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin: 0.25rem 0;
+        }
+
+        .mdLabel {
+            font-size: 0.85rem;
+        }
+    }
+
+    .mdLabel {
+        color: $greyDark;
+    }
+
+    .mdValue {
+        color: $black;
+    }
+
+    .mdAction {
+        color: $primaryColor;
+        cursor: pointer;
+        font-weight: bold;
+
+        &.disabled {
+            cursor: default;
+            color: $greyDark;
+        }
+    }
+}

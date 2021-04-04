@@ -1,0 +1,44 @@
+/**************************
+     Default Colors
+**************************/
+
+$red: #ff0D0D;
+$green: #00B24F;
+$orange: #F5A623;
+$blue: #005b96;
+$yellow: #F9CC39;
+$violet: #7D62BC;
+
+$grey: #d8d8d8;
+$greyLight: #f7f7f7;
+$greyDark: #767676;
+$black: #333333;
+$white: #ffffff;
+
+$primaryColor: $blue;
+$secondaryColor: $black;
+$accentColor: rgba($blue, 0.2);
+
+$textColor: $black;
+$linkColor: $primaryColor;
+$pageBackground: $white;
+
+/*-------------------
+     Breakpoints
+--------------------*/
+
+$mobileBreakpoint: 320px;
+$tabletBreakpoint: 768px;
+$computerBreakpoint: 992px;
+$largeMonitorBreakpoint: 1200px;
+$widescreenMonitorBreakpoint: 1920px;
+
+$largestMobileScreen: ($tabletBreakpoint - 1px);
+$largestTabletScreen: ($computerBreakpoint - 1px);
+$largestSmallScreen: ($largeMonitorBreakpoint - 1px);
+$largestLargeScreen: ($widescreenMonitorBreakpoint - 1px);
+
+/*-------------------
+       Globals
+--------------------*/
+$top-menu-height: 4em;

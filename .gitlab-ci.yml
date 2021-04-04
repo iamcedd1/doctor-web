@@ -1,0 +1,316 @@
+before_script:
+  - export VERSION=1.0.14
+  - export MR_ID=147
+  - export COMPILED_IMAGE=asia.gcr.io/image-repository-235607/doctor-web:${VERSION}
+  - export COMPILED_IMAGE_AWS=860524703708.dkr.ecr.ap-southeast-1.amazonaws.com/doctor-web:${VERSION}
+  - export GITLAB_PROJECT_ID=759
+  - export PRIVATE_TOKEN=YjofXA3sfsFPsgyGastd
+  - export DSONAR_PROJECTKEY=DOCTOR-WEB-PL2
+
+cache:
+  key: ${CI_COMMIT_REF_NAME}
+  paths:
+  - node_modules/
+
+stages:
+  - test
+  - tag
+  - build
+  - deploy
+  - auto-message
+  
+#Start of sonarqube scan in master
+test-web sonarqube:
+  stage: test
+  tags:
+    - test
+  only:
+    - master
+  script:    
+   
+    - sonar-scanner -Dsonar.projectKey=${DSONAR_PROJECTKEY} -Dsonar.host.url=http://35.221.182.67:9000 -Dsonar.login=511fe42f8b130d63ef2676d69c4a8be2d92b4754 -Dsonar.sources=. -Dsonar.exclusions=assets/src/,/cypress/**,/scripts/**,assets/node_modules/,assets/vendor/** -Dsonar.working.directory=../target/.sonar
+    - export url=$(cat ../target/.sonar/report-task.txt | grep ceTaskUrl | cut -c11- ) #URL where report gets stored
+    - sleep 15s #Wait time for the report
+    - curl -k -u "511fe42f8b130d63ef2676d69c4a8be2d92b4754":"" $url -o analysis.txt
+    - export status=$(cat analysis.txt | jq -r '.task.status') #Status as SUCCESS, CANCELED or FAILED
+    - export analysisId=$(cat analysis.txt | jq -r '.task.analysisId') #Get the analysis Id
+    - |
+      if [ "$status" == "SUCCESS" ];then 
+        echo -e "SONAR ANALYSIS SUCCESSFUL...ANALYSING RESULTS";
+        curl -k -u "511fe42f8b130d63ef2676d69c4a8be2d92b4754":"" http://35.221.182.67:9000/api/qualitygates/project_status?analysisId=$analysisId -o result.txt; #Analysis result like critical, major and minor issues
+        export result=$(cat result.txt | jq -r '.projectStatus.status');
+
+        if [ "$result" == "ERROR" ];then
+          echo -e "SONAR RESULTS FAILED";
+          echo "$(cat result.txt | jq -r '.projectStatus.conditions')"; 
+          exit 1 
+        else
+          echo -e "SONAR RESULTS SUCCESSFUL";
+          echo "$(cat result.txt | jq -r '.projectStatus.conditions')";
+          exit 0 
+        fi
+       else 
+        echo -e "\e[SONAR ANALYSIS FAILED\e[0m";
+        exit 1 
+      fi
+
+# Start of IST-dev
+tag-dev-api:
+  stage: tag
+  environment:
+    name: dev
+    url: https://doctor-dev.maxicare.com.ph
+  only:
+    - dev
+  tags:
+    - release_notes
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\<br/>}"
+    - "commits=${commits//\\\"/}"
+    - "data='{\"tag_name\": \"v'\"${VERSION}\"'\",\"ref\": \"ist\",\"message\": \"Release '\"${VERSION}\"'\",\"release_description\": \"'\"$commits\"'\"}'"
+    - "curl -X POST 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/repository/tags' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" -H 'Content-Type: application/json' -d \"$data\""
+
+build-dev-api:
+  stage: build
+  environment:
+    name: dev
+    url: https://doctor-dev.maxicare.com.ph
+  only:
+    - dev
+  tags:
+    - builder
+  script:
+    - git branch -f master HEAD
+    - docker-compose build
+    - docker push ${COMPILED_IMAGE}
+    - docker rmi -f ${COMPILED_IMAGE}
+
+deploy-api to dev:
+  stage: deploy
+  environment:
+    name: dev
+    url: https://doctor-dev.maxicare.com.ph
+  only:
+    - dev
+  tags:
+    - builder
+  script:
+    - kubectl config use-context gke_innerpeace-ist-235604_asia-east1_innerpeace-ist-c1
+    - kubectl apply -f scripts/k8/deployment/env-variable/dev/env-doctor-web.yml
+    - kubectl apply -f scripts/k8/deployment/doctor-dev/doctor-web.yml
+
+auto-message mattermost dev:
+  stage: auto-message
+  tags:
+    - tag
+  only:
+    - dev
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\\\n}"
+    - "commits=${commits//\\\"/}"
+    - "echo '{\"text\": \"Hi @all, Doctor Web (Dev Environment) v'${VERSION}' is now deployed in IST.\\nRelease Notes: \\n```\\n'$commits'\\n```\"}' > payload.txt"
+    - "curl -i -X POST -d @payload.txt https://mattermost.medilink.com.ph/hooks/co19cuz17tgdibbgaf91ifhuch --header 'Content-Type: application/json'"
+# End of IST-dev
+
+# Start of IST
+tag-api:
+  stage: tag
+  environment:
+    name: ist
+    url: https://doctor-ist.maxicare.com.ph
+  only:
+    - ist
+  tags:
+    - release_notes
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\<br/>}"
+    - "commits=${commits//\\\"/}"
+    - "data='{\"tag_name\": \"v'\"${VERSION}\"'\",\"ref\": \"ist\",\"message\": \"Release '\"${VERSION}\"'\",\"release_description\": \"'\"$commits\"'\"}'"
+    - "curl -X POST 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/repository/tags' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" -H 'Content-Type: application/json' -d \"$data\""
+
+build-api:
+  stage: build
+  environment:
+    name: ist
+    url: https://doctor-ist.maxicare.com.ph
+  only:
+    - ist
+  tags:
+    - builder
+  script:
+    - git branch -f master HEAD
+    - docker-compose build
+    - docker push ${COMPILED_IMAGE}
+    - docker rmi -f ${COMPILED_IMAGE}
+
+deploy-api to ist:
+  stage: deploy
+  environment:
+    name: ist
+    url: https://doctor-ist.maxicare.com.ph
+  only:
+    - ist
+  tags:
+    - builder
+  script:
+    - kubectl config use-context gke_innerpeace-ist-235604_asia-east1_innerpeace-ist-c1
+    - kubectl apply -f scripts/k8/deployment/env-variable/ist/env-doctor-web.yml
+    - kubectl apply -f scripts/k8/deployment/doctor-web.yml
+
+auto-message mattermost ist:
+  stage: auto-message
+  tags:
+    - tag
+  only:
+    - ist
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\\\n}"
+    - "commits=${commits//\\\"/}"
+    - "echo '{\"text\": \"Hi @all, Doctor Web v'${VERSION}' is now deployed in IST.\\nRelease Notes: \\n```\\n'$commits'\\n```\"}' > payload.txt"
+    - "curl -i -X POST -d @payload.txt https://mattermost.medilink.com.ph/hooks/co19cuz17tgdibbgaf91ifhuch --header 'Content-Type: application/json'"
+# End of IST
+######AWS_START###############################################
+#Start of UAT
+tag-api-uat:
+  stage: tag
+  environment:
+    name: uat
+    url: https://doctor-awsuat.maxicare.com.ph
+  only:
+    - aws_aut
+  tags:
+    - awsdeploy
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\<br/>}"
+    - "commits=${commits//\\\"/}"
+    - "data='{\"tag_name\": \"v'\"${VERSION}\"'\",\"ref\": \"ist/api\",\"message\": \"Release '\"${VERSION}\"'\",\"release_description\": \"'\"$commits\"'\"}'"
+    - "curl -X POST 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/repository/tags' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" -H 'Content-Type: application/json' -d \"$data\""
+  retry: 2
+
+build-api-uat:
+  stage: build
+  environment:
+    name: uat
+    url: https://doctor-awsuat.maxicare.com.ph
+  only:
+    - aws_uat
+  tags:
+    - awsdeploy
+  script:
+    - git branch -f master HEAD
+    - docker-compose build -f aws/docker-compose.yml
+    - docker push ${COMPILED_IMAGE_AWS}
+    - docker rmi -f ${COMPILED_IMAGE_AWS}
+  retry: 2
+
+deploy-api to aws_uat:
+  stage: deploy
+  environment:
+    name: uat
+    url: https://doctor-awsuat.maxicare.com.ph
+  tags:
+    - awsdeploy
+  only:
+    - aws_uat
+  script:
+    - kubectl config use-context arn:aws:eks:ap-southeast-1:860524703708:cluster/eks-uat-v1
+    - kubectl config set-context --current --namespace=innerpeace
+    #Delete
+    - kubectl delete configmap env-doctor-web --namespace=innerpeace
+    - kubectl delete deployment doctor-web --namespace=innerpeace
+    #Deploy
+    - kubectl apply -f scripts/k8/deployment/env-variable/aws/doctor-webconf.yaml
+    - kubectl apply -f scripts/k8/deployment/aws/doctor-web.yaml
+######AWS_END#################################################
+
+# Start of UAT
+deploy-api to uat:
+  stage: deploy
+  environment:
+    name: uat
+    url: https://doctor-uat.maxicare.com.ph
+  only:
+    - uat
+  tags:
+    - builder
+  script:
+    - kubectl config use-context gke_innerpeace-uat-235903_asia-east1_innerpeace-uat-c1
+    - kubectl apply -f scripts/k8/deployment/env-variable/uat/env-doctor-web.yml
+    - kubectl apply -f scripts/k8/deployment/doctor-web.yml
+
+auto-message mattermost uat:
+  stage: auto-message
+  tags:
+    - tag
+  only:
+    - uat
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\\\n}"
+    - "commits=${commits//\\\"/}"
+    - "echo '{\"text\": \"Hi @all, Doctor Web v'${VERSION}' is now deployed in UAT.\\nRelease Notes: \\n```\\n'$commits'\\n```\"}' > payload.txt"
+    - "curl -i -X POST -d @payload.txt https://mattermost.medilink.com.ph/hooks/co19cuz17tgdibbgaf91ifhuch --header 'Content-Type: application/json'"
+# End of UAT
+
+# Start of Staging
+deploy-api to staging:
+  stage: deploy
+  environment:
+    name: staging
+    url: https://doctor-staging.maxicare.com.ph
+  tags:
+    - builder
+  only:
+    - staging
+  script:
+    - kubectl config use-context gke_innerpeace-staging_asia-east2_innerpeace-staging-c2
+    - kubectl apply -f scripts/k8/deployment/env-variable/staging/env-doctor-web.yml
+    - kubectl apply -f scripts/k8/deployment/doctor-web.yml
+
+auto-message mattermost staging:
+  stage: auto-message
+  tags:
+    - tag
+  only:
+    - staging
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\\\n}"
+    - "commits=${commits//\\\"/}"
+    - "echo '{\"text\": \"Hi @all, Doctor Web v'${VERSION}' is now deployed in Staging.\\nRelease Notes: \\n```\\n'$commits'\\n```\"}' > payload.txt"
+    - "curl -i -X POST -d @payload.txt https://mattermost.medilink.com.ph/hooks/co19cuz17tgdibbgaf91ifhuch --header 'Content-Type: application/json'"
+# End of Staging
+
+# Start of Production
+deploy-api to prod:
+  stage: deploy
+  environment:
+    name: prod
+    url: https://doctor.maxicare.com.ph
+  tags:
+    - builder
+  only:
+    - prod
+  script:
+    - kubectl config use-context gke_innerpeace-prod_asia-east2_innerpeace-prod-c1
+    - kubectl apply -f scripts/k8/deployment/env-variable/prod/env-doctor-web.yml
+    - kubectl apply -f scripts/k8/deployment/doctor-web.yml
+
+auto-message mattermost prod:
+  stage: auto-message
+  tags:
+    - tag
+  only:
+    - prod
+  script:
+    - "commits=$(curl -X GET 'https://gitlab.medilink.com.ph/api/v4/projects/'\"${GITLAB_PROJECT_ID}\"'/merge_requests/'\"${MR_ID}\"'/commits' -H 'Private-Token: '\"${PRIVATE_TOKEN}\" | jq -r \"[.[] | .title] | @csv\")"
+    - "commits=${commits//,/\\\\n}"
+    - "commits=${commits//\\\"/}"
+    - "echo '{\"text\": \"Hi @all, Doctor Web v'${VERSION}' is now deployed in Production.\\nRelease Notes: \\n```\\n'$commits'\\n```\"}' > payload.txt"
+    - "curl -i -X POST -d @payload.txt https://mattermost.medilink.com.ph/hooks/co19cuz17tgdibbgaf91ifhuch --header 'Content-Type: application/json'"
+# End of Production

@@ -1,0 +1,23 @@
+/**************************
+      Filter Control
+**************************/
+.mdFilter {
+    z-index: 999 !important;
+
+    .mdTab {
+        min-width: 30rem;
+
+        &.mdFixed {
+            width: min-content;
+        }
+
+        @include responsive("mobile") {
+            min-width: 20rem;
+        }
+
+        .mdFilterActions {
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+}

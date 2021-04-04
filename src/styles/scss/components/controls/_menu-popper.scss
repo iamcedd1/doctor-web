@@ -1,0 +1,78 @@
+/**************************
+    Menu Popper Control
+**************************/
+.ui.modal {
+    &.mdMenuModal {
+        display: none !important;
+    }
+}
+.mdMenuPopper {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 50vw;
+
+    &:before {
+        content: unset !important;
+    }
+
+    .mdMenuItems {
+        gap: 1rem;
+        display: grid;
+        direction: rtl;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        @include responsive("desktop") {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @include responsive("tablet") {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @include responsive("mobile") {
+            grid-template-columns: 1fr;
+        }
+
+        .mdMenuItem {
+            cursor: pointer;
+
+            &:not(.mdClose) {
+                border: 1px solid $grey;
+                background-color: $white;
+                padding: 2rem;
+                border-radius: 5px;
+            }
+
+            &.mdClose {
+                right: 0;
+                position: absolute;
+                transform: translateY(-105%);
+            }
+
+            &:nth-child(4n) {
+                margin-right: 0;
+            }
+
+            .mdMenuItemImage {
+                text-align: center;
+
+                .mdImage {
+                    display: flex;
+                    justify-content: center;
+                    
+                    img {
+                        width: 100px;
+                    }
+                }
+            }
+
+            .mdMenuItemName {
+                text-align: center;
+                font-size: 1.25rem;
+            }
+        }
+    }
+}

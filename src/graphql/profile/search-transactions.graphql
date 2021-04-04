@@ -1,0 +1,27 @@
+query(
+    $displayPerPage: Int!
+    $sortBy: String!
+    $pageNumber: Int!
+    $searchValue: String!
+    $orderBy: String!
+    $filterBy: [FilterInputs]
+) {
+    transactions(
+        searchValue: $searchValue
+        displayPerPage: $displayPerPage
+        pageNumber: $pageNumber
+        orderBy: $orderBy
+        sortBy: $sortBy
+        filterBy: $filterBy
+    ) {
+        totalNumber
+        transactions {
+            loa_no
+            total_amount
+            loa_status
+            claim_no
+            issued_datetime
+            availment_date
+        }
+    }
+}

@@ -1,0 +1,11 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@boxShadow: none;
+
+/************
+    Labels
+************/
+@labelBackground: none;
+@labelTextColor: @textColor;

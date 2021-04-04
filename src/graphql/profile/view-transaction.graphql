@@ -1,0 +1,41 @@
+query($claimNo: String!) {
+    transaction(claim_no: $claimNo) {
+        loa_no
+        loa_status
+        total_amount
+        chief_complaints
+        approved_by
+
+        member_first_name
+        member_last_name
+        member_middle_name
+        member_card_no
+
+        account_code
+        account_name
+
+        plan_name
+        plan_code
+
+        facility_address
+        facility_code
+        facility_name
+        facility_type
+        facility_status
+
+        diagnosis
+
+        claim_no
+        coverage_code
+        coverage_name
+        issued_datetime
+
+        validity_date
+        practitioner {
+            name
+            code
+            specialization_code
+            specialization_description
+        }
+    }
+}

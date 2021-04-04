@@ -1,0 +1,44 @@
+/**************************
+       Box Container
+**************************/
+.mdBoxContainer {
+    &.mdPadded {
+        margin: 2rem;
+
+        &.top {
+            margin: 2rem 0 0 !important;
+        }
+
+        &.bottom {
+            margin: 0 0 2rem !important;
+        }
+
+        &.vertical {
+            margin: 2rem 0 !important;
+        }
+
+        &.horizontal {
+            margin: 0 2rem !important;
+        }
+    }
+
+    &.mdPositioned {
+        &.top {
+            top: 2rem;
+            position: absolute;
+        }
+
+        &.bottom {
+            bottom: 2rem;
+            position: absolute;
+        }
+    }
+
+    &.mdCentered {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

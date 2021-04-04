@@ -1,0 +1,171 @@
+// RESPONSIVE
+@mixin responsive($size) {
+    $mobile: "(max-width: #{$largestMobileScreen})";
+    $tablet: "(min-width: #{$tabletBreakpoint}) and (max-width: #{$largestTabletScreen})";
+    $desktopSmall: "(min-width: #{$computerBreakpoint}) and (max-width: #{$largestSmallScreen})";
+    $desktopLarge: "(min-width: #{$largeMonitorBreakpoint}) and (max-width: #{$largestLargeScreen})";
+    $desktopWide: "(min-width: #{$widescreenMonitorBreakpoint})";
+
+    @if $size == mobile {
+        @media only screen and #{$mobile} {
+            @content;
+        }
+    } @else if $size == tablet {
+        @media only screen and #{$tablet} {
+            @content;
+        }
+    } @else if $size == desktop {
+        @media only screen and #{$desktopSmall} {
+            @content;
+        }
+    } @else if $size == computer {
+        @media only screen and #{$desktopLarge} {
+            @content;
+        }
+    } @else if $size == wide {
+        @media only screen and #{$desktopWide} {
+            @content;
+        }
+    } @else {
+        @media only screen and #{$size} {
+            @content;
+        }
+    }
+}
+
+@mixin repeat($character, $n) {
+    $c: "";
+
+    @if ($n != 1) {
+        @for $i from 1 through ($n - 1) {
+            $c: $c + " " + $character;
+        }
+    }
+
+    $c: $c + " " + $character;
+    grid-template-columns: unquote($c) !important;
+    -ms-grid-columns: unquote($c);
+}
+
+@mixin grid-column($size, $prefix) {
+    $columns: 12;
+    @for $i from 1 through $columns {
+        #{$prefix}-#{$i} {
+            @include repeat($size, $i);
+        }
+    }
+}
+
+@mixin generate-colors($prefix, $property) {
+    $colors: (
+        red: $red,
+        blue: $blue,
+        grey: $grey,
+        green: $green,
+        black: $black,
+        violet: $violet,
+        yellow: $yellow,
+        orange: $orange,
+        greyDark: $greyDark,
+    );
+
+    @each $color-name, $color in $colors {
+        &.#{$prefix}-#{$color-name} {
+            #{$property}: $color;
+        }
+    }
+}
+
+@mixin generate-alignment($prefix, $property, $is_flex: false, $is_important: false) {
+    $textAlignments: left, right, center;
+    $flexAlignments: (
+        left: flex-start,
+        right: flex-end,
+        center: center,
+    );
+
+    @if $is_flex {
+        @each $alignment-name, $alignment in $flexAlignments {
+            #{$prefix}-#{$alignment-name} {
+                @if $is_important {
+                    #{$property}: $alignment !important;
+                } @else {
+                    #{$property}: $alignment;
+                }
+            }
+        }
+    } @else {
+        @each $alignment in $textAlignments {
+            #{$prefix}-#{$alignment} {
+                @if $is_important {
+                    #{$property}: $alignment !important;
+                } @else {
+                    #{$property}: $alignment;
+                }
+            }
+        }
+    }
+}
+
+@mixin generate-spacing($prefix) {
+    $size: 16;
+    $types: (
+        padding: Padding,
+        margin: Margin,
+    );
+    $sides: (
+        top: Top,
+        bottom: Bottom,
+        left: Left,
+        right: Right,
+    );
+
+    @each $type-name, $type in $types {
+        @each $side-name, $side in $sides {
+            @for $i from 1 through $size {
+                $value: $i / $size;
+                #{$prefix}#{$type}#{$side}-#{$i} {
+                    #{$type-name}-#{$side-name}: #{$value}rem !important;
+                }
+            }
+        }
+    }
+}
+
+@mixin generate-widths($prefix: ".w") {
+    @for $i from 1 through 20 {
+        $value: $i * 5;
+        #{$prefix}-#{$value} {
+            width: #{$value}#{"%"} !important;
+        }
+    }
+}
+
+@mixin generate-heights {
+    @for $i from 1 through 20 {
+        $value: $i * 5;
+        .vw-#{$value} {
+            height: #{$value}vw !important;
+        }
+    }
+}
+
+@mixin generate-container-width($prefix, $property, $unit) {
+    $size: 16;
+
+    @for $i from 1 through $size {
+        #{$prefix}-#{$i} {
+            #{$property}: repeat($i, $unit) !important;
+        }
+    }
+}
+
+@mixin generate-indention($prefix) {
+    $size: 6;
+
+    @for $i from 1 through $size {
+        #{$prefix}-#{$i} {
+            padding-left: #{$i}rem !important;
+        }
+    }
+}

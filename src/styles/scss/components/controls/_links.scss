@@ -1,0 +1,41 @@
+/**************************
+       Link Control
+**************************/
+.mdLink {
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0.2rem 0;
+    margin: 0.5rem 0;
+
+    @include responsive("mobile") {
+        margin: 0.8rem 0;
+    }
+
+    &.mdAction {
+        color: $blue !important;
+        display: block;
+    }
+
+    &.mdDisabled {
+        color: $greyDark !important;
+        cursor: unset !important;
+    }
+
+    &.mdUnderline {
+        text-decoration: underline !important;
+    }
+
+    &.medium {
+        font-size: 0.75rem !important;
+    }
+
+    &.large {
+        font-size: 1rem !important;
+    }
+
+    &.huge {
+        font-size: 1.15rem !important;
+    }
+
+    @include generate-colors("mdColor", "color");
+}

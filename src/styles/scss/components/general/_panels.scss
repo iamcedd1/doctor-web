@@ -1,0 +1,163 @@
+/**************************
+         User Panel
+**************************/
+.mdPanel {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem !important;
+    scrollbar-width: none !important;
+
+    .mdPanelHeader {
+        padding: 0 0.5rem 0.5rem !important;
+    }
+
+    .mdPanelBody {
+        flex: 1;
+        padding-bottom: 1rem !important;
+    }
+}
+
+.mdAccountPanel {
+    z-index: 1000 !important;
+
+    .mdUserAvatar {
+        border: 4px double $grey;
+        cursor: default;
+    }
+
+    .mdTitle {
+        &.mdUserName {
+            margin: 0.5rem 0;
+        }
+    }
+}
+
+.mdPanelAction {
+    display: flex !important;
+    align-items: center !important;
+    padding: 1rem 1rem !important;
+    border-bottom: 1px solid $greyLight;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $greyLight !important;
+    }
+
+    &.mdSpaced {
+        margin-bottom: 1rem;
+
+        &:last-child {
+            margin-bottom: unset;
+        }
+    }
+
+    &.mdSelected {
+        @include responsive(tablet) {
+            border-bottom: 2px solid $primaryColor;
+        }
+
+        @include responsive(mobile) {
+            border-bottom: 2px solid $primaryColor;
+        }
+
+        .mdPanelActionText {
+            font-weight: bolder;
+            color: $primaryColor;
+        }
+
+        .mdPanelActionIcon {
+            color: $primaryColor !important;
+        }
+    }
+
+    &.mdIconPosition {
+        &.mdLeft {
+            flex-direction: row;
+
+            .mdPanelActionIcon {
+                margin-right: 1rem !important;
+            }
+        }
+
+        &.mdRight {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+
+            .mdPanelActionIcon {
+                margin-left: 1rem !important;
+            }
+        }
+    }
+
+    .mdPanelActionText {
+        font-size: 1.15rem !important;
+    }
+}
+
+.mdPanelItem {
+    &::before {
+        height: unset !important;
+    }
+
+    &.mdPanelItemLayout-1 {
+        border-bottom: 1px solid $greyLight;
+    }
+}
+
+.mdNotificationPanel {
+    z-index: 3000 !important;
+
+    .mdNotificationItem {
+        display: flex !important;
+        align-items: flex-start !important;
+        padding: 1rem 0.3rem !important;
+        border-bottom: 1px solid $greyLight !important;
+        cursor: pointer;
+
+        &.mdUnread {
+            background-color: $greyLight !important;
+        }
+
+        &:hover {
+            background-color: darken($color: $greyLight, $amount: 1.5) !important;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        .mdNotificationImage {
+            flex: 1.2 !important;
+            margin-right: 0.5rem;
+        }
+
+        .mdNotificationBody {
+            display: flex;
+            flex: 7 !important;
+            flex-direction: column;
+
+            .mdNotificationTitle {
+                font-size: 1.3rem;
+                font-weight: bold;
+                margin-bottom: 0.2rem;
+            }
+
+            .mdNotificationMessage {
+                font-size: 1rem;
+                line-height: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .mdNotificationDate {
+                font-size: 0.85rem;
+                color: $greyDark;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+.mdLoaInformationPanel,
+.mdSidebarPanel {
+    padding-top: 5rem !important;
+}

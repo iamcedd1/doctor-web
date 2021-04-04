@@ -1,0 +1,186 @@
+.mdMainLayout {
+    width: 100%;
+    display: grid;
+    grid: 56px / 1fr;
+    grid-template-areas:
+        "menu"
+        "mdMainContent";
+    min-height: 100vh;
+
+    .mdMenu {
+        z-index: 1000;
+        grid-area: menu;
+        background: $greyLight !important;
+
+        .mdNavDropdown {
+            font-size: 0.9rem;
+            text-transform: uppercase !important;
+
+            > .menu {
+                margin-top: 1.5rem;
+
+                > .item {
+                    &.mdItem {
+                        text-transform: uppercase !important;
+                        min-width: 10vw !important;
+                        font-size: 1rem !important;
+                        padding: 1rem !important;
+
+                        @include responsive("tablet") {
+                            min-width: 15vw !important;
+                        }
+
+                        @include responsive("mobile") {
+                            min-width: 35vw !important;
+                        }
+                    }
+                }
+
+                @include responsive("mobile") {
+                    margin-top: 1.6rem;
+                }
+            }
+        }
+    }
+
+    .mdMainContent {
+        grid-area: mdMainContent;
+    }
+}
+
+.mdParent {
+    display: inline-flex;
+
+    .mdSide {
+        z-index: 99;
+        overflow: hidden;
+        transition: all 0.3s;
+        padding-top: $top-menu-height;
+        border-right: 1px solid $grey;
+        background-color: $greyLight !important;
+
+        &:hover {
+            overflow-y: auto;
+        }
+
+        &.mdSmallSide {
+            width: 5rem !important;
+            flex-basis: 5rem;
+        }
+
+        @include responsive("mobile") {
+            width: 100% !important;
+            padding-top: unset;
+
+            &:hover {
+                overflow-x: auto;
+                overflow-y: hidden;
+            }
+        }
+    }
+
+    .mdContent {
+        right: 0;
+        padding: 1rem;
+        padding-left: 2rem;
+        position: absolute;
+        transition: all 0.3ms;
+        width: calc(100% - 14rem);
+
+        &.mdSmallContent {
+            width: calc(100% - 4rem);
+        }
+
+        @include responsive("mobile") {
+            width: 100% !important;
+            padding: unset;
+            padding-bottom: 2.5rem;
+        }
+    }
+}
+
+.mdMainHeader {
+    height: $top-menu-height;
+    border-bottom: 1px solid $grey !important;
+    background-color: $greyLight !important;
+
+    .image-wrapper {
+        position: relative;
+        margin-right: 0.5rem;
+    }
+
+    .mdMenuBurger {
+        background-color: transparent;
+    }
+
+    .mdNotification {
+        .mdIcon {
+            margin: 0 !important;
+        }
+
+        .mdBadge {
+            top: 10%;
+            right: 19%;
+            left: unset;
+            font-size: 65%;
+            line-height: 0.5rem;
+        }
+    }
+
+    .mdSystemTime {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+
+        .label {
+            font-size: 1.1rem;
+            margin-left: 0 !important;
+        }
+    }
+
+    .mdMenuUser {
+        display: flex;
+        align-items: center;
+        padding-right: 1rem;
+        padding-left: 1rem;
+
+        .mdUserName {
+            margin-left: 0.5rem;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+.mdErrorLayout {
+    display: flex;
+    align-items: center;
+
+    .mdErrorContainer {
+        width: 100%;
+
+        @include responsive("mobile") {
+            display: flex;
+            justify-content: center;
+
+            .mdErrorContent {
+                .mdErrorDescription {
+                    text-align: center;
+                }
+            }
+        }
+
+        .mdErrorContent {
+            width: 100%;
+            font-size: 1.25rem;
+            font-weight: 800;
+
+            .mdTitle {
+                margin-bottom: 0.3rem;
+            }
+        }
+    }
+}
+
+.mdGeneralLayout {
+    display: flex;
+    align-items: center;
+}

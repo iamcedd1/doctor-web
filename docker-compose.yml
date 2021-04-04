@@ -1,0 +1,15 @@
+version: '3'
+services:
+  base:
+    build:
+      context: .
+      dockerfile: ./scripts/base/Dockerfile
+    image: asia.gcr.io/image-repository-235607/react-base
+
+  release:
+    build:
+      context: .
+      dockerfile: ./scripts/release/Dockerfile
+    depends_on:
+      - base
+    image: asia.gcr.io/image-repository-235607/doctor-web:1.0.14

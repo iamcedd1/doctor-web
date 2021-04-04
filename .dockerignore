@@ -1,0 +1,10 @@
+Dockerfile
+.dockerignore
+.gitignore
+README.md
+build
+node_modules
+.*
+_build
+**/deps/
+**/test/

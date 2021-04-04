@@ -1,0 +1,32 @@
+{
+    "users": [
+        {
+            "status": "A",
+            "username": "8685639", 
+            "password": "P@ssw0rd",
+            "terms_updated": true,
+            "bank_updated": true
+        },
+        {
+            "status": "L",
+            "username": "6056284", 
+            "password": "P@ssw0rd",
+            "terms_updated": true,
+            "bank_updated": false
+        },
+        {
+            "status": "A",
+            "username": "4903013", 
+            "password": "P@ssw0rd",
+            "terms_updated": false,
+            "bank_updated": false
+        },
+        {
+            "status": "NYR",
+            "username": "2313791", 
+            "password": "P@ssw0rd",
+            "terms_updated": false,
+            "bank_updated": false
+        }
+    ]
+}

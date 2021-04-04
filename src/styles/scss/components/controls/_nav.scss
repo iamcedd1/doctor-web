@@ -1,0 +1,28 @@
+/**************************
+    Navigation Control
+**************************/
+.mdNavItem {
+    padding: 0.5rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    transition: all 0.3ms;
+
+    &.active {
+        color: darken($color: $primaryColor, $amount: 2) !important;
+        border-right: 2px solid $primaryColor !important;
+    }
+
+    .mdIcon {
+        width: 35px !important;
+        margin-right: 0.5rem;
+        fill: $primaryColor;
+    }
+
+    .mdText {
+        font-size: 0.9rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

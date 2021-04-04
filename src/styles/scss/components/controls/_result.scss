@@ -1,0 +1,12 @@
+/**************************
+       Result Control
+**************************/
+.mdResult {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $greyDark;
+
+    &.mdMobile {
+        margin-bottom: 1rem !important;
+    }
+}

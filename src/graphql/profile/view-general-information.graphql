@@ -1,0 +1,37 @@
+query {
+    practitioner {
+        code
+        prc_no
+        first_name
+        last_name
+        suffix
+        middle_name
+        birth_date
+        gender
+        email
+        email_2
+        status
+        affiliation_status
+        phic_accredited
+        phic_accreditation_to
+        phic_accreditation_from
+        specializations {
+            code
+            name
+        }
+        sub_specializations {
+            code
+            name
+        }
+        types {
+            code
+            name
+        }
+        phones {
+            type
+            number
+            area_code
+            country_code
+        }
+    }
+}

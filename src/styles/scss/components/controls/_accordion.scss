@@ -1,0 +1,32 @@
+/**************************
+     Accordion Control
+**************************/
+.mdAccordion {
+    &.ui.basic.striped {
+        tbody {
+            & > tr {
+                &:nth-child(2n) {
+                    background-color: unset !important;
+                }
+            }
+        }
+    }
+
+    &.mdGrid {
+        tbody {
+            tr {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+
+                &:last-child {
+                    border: none !important;
+                }
+            }
+        }
+    }
+
+    .mdAccordionTitle {
+        display: flex;
+        align-items: center;
+    }
+}

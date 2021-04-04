@@ -1,0 +1,13 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+/************
+    Basic
+************/
+@basicBorderWidth: 1px;
+@basicBorder: none;
+@basicBackground: transparent;
+@fontWeight: normal;
+
+@horizontalPadding: 0;

@@ -1,0 +1,21 @@
+query {
+    practitioner {
+        telemedicine {
+            teleconsultation_channel
+            channel_others
+            primaries {
+                schedules {
+                    time_from
+                    time_to
+                    type
+                    day
+                }
+
+                facility {
+                    code
+                    name
+                }
+            }
+        }
+    }
+}

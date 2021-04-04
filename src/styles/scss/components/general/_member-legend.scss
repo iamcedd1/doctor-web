@@ -1,0 +1,17 @@
+/**************************
+       Member Legend
+**************************/
+.mdMemberLegend {
+    margin-right: 1rem;
+
+    &.vertical {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    .mdIcon {
+        width: 2rem !important;
+    }
+}

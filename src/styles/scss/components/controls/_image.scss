@@ -1,0 +1,14 @@
+/**************************
+       Image Control
+**************************/
+.mdImage {
+    width: auto;
+    height: auto;
+
+    &.mdCentered {
+        height: unset;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}

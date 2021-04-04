@@ -1,0 +1,40 @@
+/**************************
+      Textbox Control
+**************************/
+.mdInput {
+    .mdContainer {
+        display: grid;
+        column-gap: 0.5rem;
+        align-items: center;
+        grid-template-columns: 1fr;
+
+        @include generate-alignment(".md", "text-align", false, true);
+        @include generate-container-width("&.mdContainerWidth", "grid-template-columns", 1fr);
+
+        .mdMasked {
+            padding: 0.75rem 1rem !important;
+        }
+    }
+
+    .mdLinkContainer {
+        display: flex;
+        flex-direction: row;
+
+        @include generate-alignment("&.md", "justify-content", true, false);
+    }
+}
+
+.mdInputOtp {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.5rem;
+
+    input {
+        width: 3rem !important;
+        height: 3.5rem !important;
+        margin: 0 5px !important;
+        padding: 0 !important;
+    }
+}

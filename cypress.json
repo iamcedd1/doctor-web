@@ -1,0 +1,56 @@
+{
+  "projectId": "2p4xtn",
+  "baseUrl": "https://doctor-uat.maxicare.com.ph",
+  "env": {
+    "SSO_API": "https://s1.medilink.com.ph/api",
+    "DOCTOR_API": "https://doctor.maxicare.com.ph/api",
+    "screenshot": true,
+    "key": {
+      "chip": "data-cy=mdChip",
+      "text": "data-cy=mdText",
+      "card": "data-cy=mdCard",
+      "link": "data-cy=mdLink",
+      "title": "data-cy=mdTitle",
+      "modal": "data-cy=mdModal",
+      "tooltipIcon": ".mdTooltip",
+      "textBox": "data-cy=mdInput",
+      "textArea": "data-cy=mdTextArea",
+      "button": "data-cy=mdButton",
+      "labelText": "data-cy=mdLabel",
+      "captcha": "data-cy=mdCaptcha",
+      "errorText": "data-cy=mdError",
+      "checkbox": "data-cy=mdCheckbox",
+      "timeInput": "data-cy=mdTimeInput",
+      "dropdown": "data-cy=mdSelectInput",
+      "buttonIcon": "data-cy=mdButtonIcon",
+      "password": "data-cy=mdPasswordInput",
+      "calendarInput": "data-cy=mdCalendar",
+      "passwordRequirement": "data-cy=mdRequirement",
+      "table": {
+        "table": "data-cy=mdTable",
+        "cell": "data-cy=mdTableCell"
+      },
+      "alert": {
+        "info": ".mdAlertInfo",
+        "success": ".mdAlertSuccess",
+        "error": ".mdAlertError",
+        "header": ".mdAlertHeader",
+        "content": ".mdAlertContent",
+        "cancel": ".mdAlertCancel",
+        "confirm": ".mdAlertConfirm",
+        "title": ".mdAlertTitle"
+      }
+    } 
+  },
+  "viewportHeight": 1536,
+  "viewportWidth": 2048,
+  "videoCompression": false,
+  "reporter": "mochawesome",
+  "reporterOptions": {
+    "reportDir": "cypress/reports",
+    "overwrite": true,
+    "html": true,
+    "json": false,
+    "timestamp": "mmddyyyy_HHMMss"
+  }
+}

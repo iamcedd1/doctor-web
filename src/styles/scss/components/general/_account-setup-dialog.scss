@@ -1,0 +1,14 @@
+/**************************
+    Account Setup Dialog
+**************************/
+.mdAccountSetupDialog {text-align: center;
+    top: 0;
+    left: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    background-color: rgba($color: $yellow, $alpha: 0.5);
+    z-index: 1;
+}

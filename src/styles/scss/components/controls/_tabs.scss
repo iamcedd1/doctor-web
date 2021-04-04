@@ -1,0 +1,42 @@
+/**************************
+        Tab Control
+**************************/
+.mdTab {
+    &.mdBorderLess {
+        .tab {
+            border: none;
+            box-shadow: none;
+            padding: 1em 0em;
+        }
+    }
+
+    &.mdBorderTop {
+        & > .menu {
+            border-bottom: none !important;
+            border-top: 2px solid $grey;
+
+            .item {
+                border-bottom: none !important;
+                margin: -2px 0 0 !important;
+
+                &:hover {
+                    border-top: 2px solid rgba($primaryColor, $alpha: 0.5);
+                }
+
+                &.active {
+                    border-top: 2px solid;
+                }
+            }
+
+            @include responsive("mobile") {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                border-bottom: 2px solid $grey !important;
+
+                .item {
+                    border-top: 2px solid $grey;
+                }
+            }
+        }
+    }
+}

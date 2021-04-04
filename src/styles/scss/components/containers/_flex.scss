@@ -1,0 +1,39 @@
+/**************************
+      Flex Container
+**************************/
+.mdFlexContainer {
+    display: flex !important;
+
+    &.mdDirection-row {
+        flex-direction: row;
+    }
+
+    &.mdDirection-column {
+        flex-direction: column;
+    }
+
+    &.mdSpaced {
+        justify-content: space-between;
+    }
+
+    &.mdCentered {
+        align-items: center;
+        justify-content: center;
+        text-align: unset !important;
+
+        &.vertical {
+            justify-content: unset !important;
+        }
+
+        &.horizontal {
+            align-items: unset !important;
+        }
+    }
+
+    &.mdFlexed {
+        > div {
+            flex: 1;
+            overflow-wrap: anywhere;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+/**************************
+        User Avatar
+**************************/
+.mdUserAvatar {
+    border: 1px solid $primaryColor;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: $primaryColor !important;
+    color: $white !important;
+    font-weight: bold;
+
+    &.small {
+        font-size: 80%;
+        width: 25px !important;
+        height: 25px !important;
+    }
+
+    &.medium {
+        font-size: 300% !important;
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    &.large {
+        font-size: 500% !important;
+        width: 175px !important;
+        height: 175px !important;
+    }
+}

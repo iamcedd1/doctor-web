@@ -1,0 +1,23 @@
+/**************************
+        Chip Control
+**************************/
+.mdChip {
+    display: inline-block;
+    color: $primaryColor;
+    text-align: center;
+    font-family: Lato, sans-serif;
+    border: 1px solid $primaryColor;
+    border-radius: 2px;
+    padding: 0.5rem 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    &.mdAction {
+        cursor: pointer;
+    }
+
+    &.mdSelected {
+        color: $white !important;
+        background-color: $primaryColor !important;
+    }
+}

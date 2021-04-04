@@ -1,0 +1,15 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@tabletMinimumGutter: (@emSize  * 1);
+@tabletWidth: @tabletBreakpoint - (@tabletMinimumGutter * 2) - @scrollbarWidth;
+@tabletGutter: auto;
+
+@computerMinimumGutter: (@emSize  * 1.5);
+@computerWidth: @computerBreakpoint - (@computerMinimumGutter * 2) - @scrollbarWidth;
+@computerGutter: auto;
+
+@largeMonitorMinimumGutter: (@emSize  * 2);
+@largeMonitorWidth: @largeMonitorBreakpoint - (@largeMonitorMinimumGutter * 2) - @scrollbarWidth;
+@largeMonitorGutter: auto;

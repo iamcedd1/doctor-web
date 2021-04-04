@@ -1,0 +1,127 @@
+/*-------------------
+       General
+--------------------*/
+@include generate-spacing(".md");
+@include generate-widths;
+@include generate-heights;
+
+@include responsive("wide") {
+    @include generate-widths(".ww");
+}
+
+@include responsive("desktop") {
+    @include generate-widths(".dw");
+}
+
+@include responsive("computer") {
+    @include generate-widths(".cw");
+}
+
+@include responsive("tablet") {
+    @include generate-widths(".tw");
+}
+
+@include responsive("mobile") {
+    @include generate-widths(".mw");
+}
+
+.mdBrand {
+    width: 120px !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-spacing {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.align-top {
+    display: flex;
+    align-items: flex-start;
+}
+
+.align-center {
+    display: flex;
+    align-items: center;
+}
+
+.align-bottom {
+    display: flex;
+    align-items: flex-end;
+}
+
+.size-normal {
+    font-size: 1.1rem;
+    padding: 0.2rem 0;
+}
+
+.default {
+    &.text {
+        font-style: italic;
+    }
+}
+
+/*-------------------
+     Color Styles
+--------------------*/
+.red {
+    color: $red;
+}
+
+.green {
+    color: $green;
+}
+
+.orange {
+    color: $orange;
+}
+
+.blue {
+    color: $blue;
+}
+
+.yellow {
+    color: $yellow;
+}
+
+.violet {
+    color: $violet;
+}
+
+.white {
+    color: $white !important;
+}
+
+/*-------------------
+     Text Styles
+--------------------*/
+.text-uppercase {
+    text-transform: uppercase !important;
+}
+
+.text-lowercase {
+    text-transform: lowercase !important;
+}
+
+.text-bold {
+    font-weight: 700 !important;
+}
+
+.mdCentered {
+    text-align: center !important;
+}
+
+/*-------------------
+    Height Styles
+--------------------*/

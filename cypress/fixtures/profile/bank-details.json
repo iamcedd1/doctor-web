@@ -1,0 +1,10 @@
+{
+    "valid_details": {
+        "tin": "12345678901234",
+        "account": "123456678123",
+        "name": "EQUICOM SAVINGS BANK",
+        "tinExpected": "123-456-789-01234",
+        "rate": "10%",
+        "status": "Non VAT-able"
+    }
+}

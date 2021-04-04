@@ -1,0 +1,29 @@
+/**************************
+       Table Control
+**************************/
+.mdTable {
+    &.mdCustomed {
+        tbody {
+            tr {
+                vertical-align: top !important;
+            }
+        }
+    }
+
+    .mdTableCell {
+        &.mdGrid {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+
+            .ui.basic.striped {
+                tbody {
+                    & > tr {
+                        &:nth-child(2n) {
+                            background-color: unset !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

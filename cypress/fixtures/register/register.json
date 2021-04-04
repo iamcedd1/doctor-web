@@ -1,0 +1,4 @@
+{
+    "channels": ["Mobile", "Viber", "Other"],
+    "days": ["S", "M", "T", "W", "TH", "F", "SA"]
+}

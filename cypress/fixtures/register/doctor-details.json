@@ -1,0 +1,36 @@
+{
+    "doctors": [
+        {
+            "first_name": "Chloe",
+            "last_name": "Decker",
+            "prc_no": "66193911356589438",
+            "mode_of_payment": "I",
+            "affiliation_status": "A",
+            "registered": false
+        },
+        {
+            "first_name": "Linda",
+            "last_name": "Martin",
+            "prc_no": "2491967",
+            "mode_of_payment": "I",
+            "affiliation_status": "A",
+            "registered": false
+        },
+        {
+            "first_name": "Lucifer",
+            "last_name": "Morningstar",
+            "prc_no": "75344140148807092",
+            "mode_of_payment": "I",
+            "affiliation_status": "A",
+            "registered": false
+        },
+        {
+            "first_name": "Mazikeen",
+            "last_name": "Smith",
+            "prc_no": "8685639",
+            "mode_of_payment": "I",
+            "affiliation_status": "A",
+            "registered": false
+        }
+    ]
+}

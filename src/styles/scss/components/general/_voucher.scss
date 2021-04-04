@@ -1,0 +1,21 @@
+.react-pdf__Page__textContent {
+    display: none !important;
+}
+.mdVoucherContainer {
+    height: 475px;
+    overflow: hidden;
+
+    .mdVoucherData {
+        svg {
+            height: auto !important;
+            width: 100% !important;
+        }
+        margin-bottom: 1rem;
+
+        .mdVoucherPage {
+            div {
+                width: 75rem !important;
+            }
+        }
+    }
+}

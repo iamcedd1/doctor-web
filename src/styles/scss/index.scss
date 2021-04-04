@@ -1,0 +1,84 @@
+@import "./globals/variables.scss";
+@import "./globals/mixins.scss";
+@import "./globals/general.scss";
+
+@import "./components/index.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    overflow-x: hidden;
+    scrollbar-color: $primaryColor !important;
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $primaryColor !important;
+    }
+}
+
+input {
+    &::-webkit-input-placeholder {
+        font-style: italic;
+    }
+    &:-moz-placeholder {
+        font-style: italic;
+    }
+    &::-moz-placeholder {
+        font-style: italic;
+    }
+    &:-ms-input-placeholder {
+        font-style: italic;
+    }
+}
+
+.mdGeneralWrapper {
+    .right-container {
+        min-height: 100vh;
+        background-color: $greyLight;
+        background-position: center center;
+        background-size: 90%;
+        background-repeat: no-repeat;
+
+        @include responsive("mobile") {
+            display: none !important;
+        }
+
+        @include responsive("tablet") {
+            display: none !important;
+        }
+    }
+
+    .login-container {
+        min-height: 100vh;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        @include responsive("mobile") {
+            min-height: 70vh !important;
+        }
+
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 2rem 0;
+
+            @include responsive("mobile") {
+                padding: 2rem 0;
+            }
+
+            .content-container {
+                width: 70%;
+
+                @include responsive("mobile") {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

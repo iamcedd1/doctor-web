@@ -1,0 +1,36 @@
+/**************************
+       Text Control
+**************************/
+.mdParagraph {
+    line-height: 1.5rem;
+    padding: 0.1rem 0 !important;
+    margin: 0.3rem 0 !important;
+    font-size: 1rem !important;
+
+    &.mdBold {
+        font-weight: bold;
+    }
+
+    &.mdItalic {
+        font-style: italic;
+    }
+
+    &.mdPadded {
+        padding: 0.2rem 0;
+        margin: 0.8rem 0;
+    }
+
+    &.mdCentered {
+        text-align: center;
+    }
+
+    &.mdIndented {
+        @include generate-indention("&.mdIndentLevel");
+    }
+
+    @include generate-colors("mdColor", "color");
+}
+
+.mdError {
+    line-height: 1.25rem !important;
+}

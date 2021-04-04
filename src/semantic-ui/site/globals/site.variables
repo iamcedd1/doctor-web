@@ -1,0 +1,58 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@emSize: 14px;
+@fontSize : 14px;
+@fontName : 'Lato';
+@importGoogleFonts : false;
+
+/*-------------------
+    Brand Colors
+--------------------*/
+
+@primaryColor        : @blue;
+@secondaryColor      : @black;
+
+@lightPrimaryColor   : @lightBlue˛;
+@lightSecondaryColor : @lightBlack;
+
+/*-------------------
+        Page
+--------------------*/
+
+@pageBackground      : @white;
+@pageOverflowX       : hidden;
+
+@lineHeight          : 1.4285em;
+@textColor           : @black;
+
+/*-------------------
+       Links
+--------------------*/
+
+@linkColor           : @blue;
+@linkUnderline       : none;
+@linkHoverColor      : darken(saturate(@linkColor, 20), 15, relative);
+@linkHoverUnderline  : @linkUnderline;
+
+/*-------------------
+      Site Colors
+--------------------*/
+
+@red: #C62828;
+@green: #00B24F;
+@orange: #E65100;
+@blue: #005b96;
+
+@greyLight: #F7F7F7;
+@black: #333333;
+@white: #FFFFFF;
+
+/*-------------------
+     Neutral Text
+--------------------*/
+
+@darkTextColor               : rgba(0, 0, 0, 0.85);
+@mutedTextColor              : rgba(0, 0, 0, 0.6);
+@lightTextColor              : #181818;

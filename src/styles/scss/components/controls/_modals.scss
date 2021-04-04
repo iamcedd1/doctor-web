@@ -1,0 +1,44 @@
+/**************************
+       Modal Control
+**************************/
+.mdModal {
+    .mdModalHeader {
+        .mdModalTitleLabel {
+            font-weight: normal !important;
+            font-size: 1.1rem !important;
+            letter-spacing: 1px;
+            padding-bottom: unset !important;
+            margin-bottom: unset !important;
+        }
+    }
+
+    .mdModalContent {
+        &.mdPadded {
+            padding: 3rem 2rem;
+        }
+
+        &.mdCentered {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mdClose {
+            top: 0;
+            right: 0;
+            transform: translate(50%, -50%);
+            position: absolute;
+        }
+    }
+
+    .mdCard {
+        .content {
+            > .description {
+                @include responsive("mobile") {
+                    padding: 0.3rem 0 !important;
+                }
+            }
+        }
+    }
+}

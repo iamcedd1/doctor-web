@@ -1,0 +1,29 @@
+/**************************
+      Button Control
+**************************/
+.mdButton {
+    cursor: pointer;
+
+    &.mdPadded {
+        margin: 1rem 0 !important;
+    }
+
+    .mdIcon {
+        opacity: 1 !important;
+    }
+
+    &.mdIconText {
+        min-height: 1em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        color: $linkColor;
+        font-weight: bold;
+
+        .mdIcon {
+            &.big {
+                font-size: 2.7em;
+            }
+        }
+    }
+}

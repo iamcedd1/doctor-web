@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: innerpeace
+  name: env-doctor-web-dev
+data:
+  env.js: |
+    window.ENV = "DEV"
+    window.DOCTOR_URL = "https://doctor-ist.medilink.com.ph/api/";
+    window.SSO_URL = "https://s1-ist.medilink.com.ph/api/";
+    window.NOTIFICATION_URL = "https://doctor-notification-ist.medilink.com.ph/";

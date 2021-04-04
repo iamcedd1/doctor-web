@@ -1,0 +1,20 @@
+/**************************
+      Calendar Control
+**************************/
+.mdDatePicker {
+    display: flex;
+    flex-direction: column;
+
+    &.mdError {
+        ::placeholder {
+            color: #EBC6C5 !important;
+        }
+
+        input {
+            background: #fff6f6 !important;
+            border-color: #e0b4b4 !important;
+            color: #9f3a38 !important;
+            box-shadow: none !important;
+        }
+    }
+}

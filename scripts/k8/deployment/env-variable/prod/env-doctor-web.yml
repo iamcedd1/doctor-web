@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: innerpeace
+  name: env-doctor-web
+data:
+  env.js: |
+    window.ENV = "PRD"
+    window.DOCTOR_URL = "https://doctor.maxicare.com.ph/api/";
+    window.AUTH_URL = "https://payor.maxicare.com.ph/authorization/api/";
+    window.SSO_URL = "https://s1.medilink.com.ph/api/";
+    window.NOTIFICATION_URL = "https://doctor-notification.medilink.com.ph/";

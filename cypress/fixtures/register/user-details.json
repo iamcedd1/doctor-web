@@ -1,0 +1,40 @@
+{
+    "details": [{ "first_name": "TEST", "last_name": "JOSE", "prc_no": "000011234453" }],
+    "valid_information": [
+        {
+            "mobile": "9959329658",
+            "email": "doctorlink.test05@gmail.com",
+            "password": "P@ssw0rd",
+            "channels": ["Viber", "Other"],
+            "other": "WhatsApp",
+            "days": ["M", "T", "W", "TH", "F"],
+            "daysName": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "times": ["09:30 - 12:30", "13:40 - 17:30"],
+            "timeFroms": [
+                [9, 6],
+                [13, 8]
+            ],
+            "timeTos": [
+                [12, 6],
+                [17, 6]
+            ]
+        }
+    ],
+    "invalid_information": {
+        "mobile": "9171402480",
+        "email": "doctorlink.test01@gmail.com",
+        "password": "P@ssw0rd",
+        "channels": ["Mobile", "Viber"],
+        "days": ["S", "M"],
+        "timeFroms": [
+            [9, 6],
+            [13, 8]
+        ],
+        "timeTos": [
+            [12, 6],
+            [17, 6]
+        ],
+        "daysName": ["Sunday", "Monday"],
+        "times": ["09:30 - 12:30", "13:40 - 17:30"]
+    }
+}

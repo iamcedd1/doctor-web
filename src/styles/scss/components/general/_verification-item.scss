@@ -1,0 +1,40 @@
+/**************************
+     Verification Item
+**************************/
+.mdVerificationItem {
+    display: flex;
+    padding: 1rem 1rem;
+    margin-bottom: 5px;
+    align-items: center;
+    background-color: $greyLight;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $grey;
+
+        .mdVerificationIcon {
+            animation: shake1 infinite 0.6s;
+        }
+    }
+
+    .mdVerificationContent {
+        flex: 1;
+        padding-left: 5px;
+
+        .mdVerificationTitle {
+            display: block;
+            font-weight: bold;
+        }
+
+        .mdVerificationText {
+            display: block;
+            padding-top: 5px;
+        }
+    }
+
+    .mdVerificationArrow {
+        &.mdIcon {
+            color: $greyDark !important;
+        }
+    }
+}

@@ -1,0 +1,34 @@
+/**************************
+      File Container
+**************************/
+.mdFileContainer {
+    display: flex;
+    flex-direction: row;
+    padding: 0.8rem;
+    margin: 0.5rem 0 1rem;
+    border: 0.1rem solid lightgrey;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 0.4rem;
+
+    .mdFileIcon {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .mdFileContent {
+        flex: 8;
+
+        .mdFileName {
+            margin: 0 !important;
+            word-break: break-all;
+        }
+
+        .mdFileLink {
+            font-weight: unset;
+            text-decoration: underline;
+        }
+    }
+}

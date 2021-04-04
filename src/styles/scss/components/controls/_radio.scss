@@ -1,0 +1,22 @@
+/**************************
+      Radio Control
+**************************/
+.mdRadioGroup {
+    &.mdIndented {
+        margin-left: 2rem !important;
+    }
+}
+
+.mdRadio {
+    margin: 0.2rem 0;
+
+    &.checked {
+        input {
+            &:checked ~ label {
+                &::after {
+                    background-color: $primaryColor !important;
+                }
+            }
+        }
+    }
+}

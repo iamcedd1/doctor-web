@@ -1,0 +1,22 @@
+/**************************
+      TextLabel Control
+**************************/
+.mdTextLabel {
+    padding: 0.3rem 0;
+
+    @include responsive("mobile") {
+        &.description {
+            padding: 0.3rem 0 !important;
+        }
+    }
+
+    .mdLabel {
+        padding-right: 0.2rem;
+        font-weight: normal;
+        color: $greyDark;
+    }
+
+    .mdText {
+        color: $black;
+    }
+}

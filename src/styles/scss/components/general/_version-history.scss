@@ -1,0 +1,87 @@
+/**************************
+      Version History
+**************************/
+.mdVersionHistory {
+    z-index: 2000 !important;
+    padding: 0 !important;
+
+    &.mdDark {
+        .mdVersionHeader {
+            .mdTitle {
+                color: $black !important;
+            }
+
+            .mdClose {
+                color: $black !important;
+            }
+        }
+    }
+
+    &.mdLight {
+        .mdVersionHeader {
+            .mdTitle {
+                color: $greyLight !important;
+            }
+
+            .mdClose {
+                color: $greyLight !important;
+            }
+        }
+    }
+
+    .mdVersionHeader {
+        top: 0;
+        position: sticky;
+        position: -webkit-sticky;
+        padding: 3rem 3rem 3rem 1rem;
+        background-color: lighten($primaryColor, 0%);
+        z-index: 1000;
+
+        .mdTitle {
+            margin-bottom: 0 !important;
+        }
+
+        .mdClose {
+            top: 0;
+            right: 0;
+            cursor: pointer;
+            position: absolute;
+            transform: translateY(50%);
+        }
+    }
+
+    .mdVersionDay {
+        background-color: $greyLight !important;
+    }
+
+    .mdVersionItem {
+        padding: 0 !important;
+
+        .mdAccordionTitle {
+            padding: 1rem !important;
+
+            &.active {
+                background-color: lighten($primaryColor, 10%);
+            }
+
+            .mdVersionTitle {
+                font-weight: 700 !important;
+            }
+        }
+
+        .mdAccordionContent {
+            padding: 0.5rem 0.5rem 0.5rem 3rem !important;
+
+            .mdParagraph {
+                padding: 0 !important;
+                margin: 0.5rem 0 !important;
+                line-height: 1.4rem !important;
+            }
+        }
+
+        .mdParagraph {
+            padding: 0 !important;
+            margin: 0.5rem 0 !important;
+        }
+    }
+}

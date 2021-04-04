@@ -1,0 +1,32 @@
+/**************************
+      Grid Container
+**************************/
+.mdGridContainer {
+    gap: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+
+    &.mdColumn {
+        @include grid-column("1fr", "&.mdColumn");
+
+        @include responsive("wide") {
+            @include grid-column("1fr", "&.mdWColumn");
+        }
+        
+        @include responsive("desktop") {
+            @include grid-column("1fr", "&.mdDColumn");
+        }
+        
+        @include responsive("computer") {
+            @include grid-column("1fr", "&.mdCColumn");
+        }
+        
+        @include responsive("tablet") {
+            @include grid-column("1fr", "&.mdTColumn");
+        }
+        
+        @include responsive("mobile") {
+            @include grid-column("1fr", "&.mdMColumn");
+        }
+    }
+}

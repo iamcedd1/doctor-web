@@ -1,0 +1,41 @@
+apiVersion: v1
+data:
+  env.js: |
+    window.ENV = "UAT"
+    window.DOCTOR_URL = "https://doctor-awsuat.maxicare.com.ph/api/";
+    window.AUTH_URL = "https://payor-awsuat.maxicare.com.ph/authorization/api/";
+    window.SSO_URL = "https://s1-awsuat.medilink.com.ph/api/";
+    window.APD_URL = "https://payor-awsuat.maxicare.com.ph/apd/api/";
+    window.URG_URL = "https://payor-awsuat.maxicare.com.ph/urg/api/";
+    window.MASTERFILES_URL = "https://payor-awsuat.maxicare.com.ph/masterfiles/api/";
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"env.js":"window.ENV = \"UAT\"\nwindow.DOCTOR_URL = \"https://doctor-awsuat.maxicare.com.ph/api/\";\nwindow.AUTH_URL = \"https://payor-awsuat.maxicare.com.ph/authorization/api/\";\nwindow.SSO_URL = \"https://s1-awsuat.medilink.com.ph/api/\";\nwindow.APD_URL = \"https://payor-awsuat.maxicare.com.ph/apd/api/\";\nwindow.URG_URL = \"https://payor-awsuat.maxicare.com.ph/urg/api/\";\nwindow.MASTERFILES_URL = \"https://payor-awsuat.maxicare.com.ph/masterfiles/api/\";\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2020-12-02T07:13:44Z","name":"env-doctor-web","namespace":"innerpeace","resourceVersion":"2219067","selfLink":"/api/v1/namespaces/innerpeace/configmaps/env-doctor-web","uid":"caf0bd0a-24b5-45be-89e6-13f800e7a730"}}
+  creationTimestamp: "2020-12-29T03:55:47Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data: {}
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2020-12-29T03:55:47Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:data:
+        f:env.js: {}
+    manager: kubectl-edit
+    operation: Update
+    time: "2021-02-23T10:19:12Z"
+  name: env-doctor-web
+  namespace: innerpeace
+  resourceVersion: "15147219"
+  selfLink: /api/v1/namespaces/innerpeace/configmaps/env-doctor-web
+  uid: a3cc2223-4695-4b3e-8049-91948562a2d7

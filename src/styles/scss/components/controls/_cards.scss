@@ -1,0 +1,37 @@
+/**************************
+       Card Control
+**************************/
+.mdCard {
+    margin: 0 !important;
+
+    @include responsive("mobile") {
+        margin: 0 0 1rem !important;
+    }
+
+    &.mdPadded {
+        margin-bottom: 1rem !important;
+    }
+
+    .header {
+        font-size: 1.15rem !important;
+    }
+
+    .content {
+        > .description {
+            @include responsive("mobile") {
+                padding: unset !important;
+            }
+        }
+    }
+
+    .mdCardAction {
+        text-align: center;
+        cursor: pointer;
+        color: $primaryColor !important;
+    }
+
+    .mdStatus {
+        flex: unset;
+        min-width: 5rem;
+    }
+}
