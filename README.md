@@ -94,9 +94,18 @@ Once you have downloaded the archive and opened it, you will find the following 
 ├── src/
 |   ├── components/
 |   |   ├── controls
-|   |   |   ├── CButton.tsx
-|   |   |   ├── CSnackbar.tsx
-|   |   |   └── CTitle.tsx
+|   |   |   ├── CButton
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
+|   |   |   ├── CInput
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
+|   |   |   ├── CSnackbar
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
+|   |   |   ├── CTitle
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
 |   |   └── modals/
 |   ├── contexts/
 |   |   ├── app.jsx
