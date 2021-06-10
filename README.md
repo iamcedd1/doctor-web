@@ -81,13 +81,6 @@ Once you have downloaded the archive and opened it, you will find the following 
 
 ``` html
 ├── README.md
-├── cypress/
-|   ├── fixtures/
-|   ├── integration/
-|   |   ├── login/
-|   |   ├── users/
-|   ├── plugins/
-|   ├── support/
 ├── public/
 |   ├── images/
 |   |   ├── error/
@@ -100,38 +93,36 @@ Once you have downloaded the archive and opened it, you will find the following 
 |   └── index.js
 ├── src/
 |   ├── components/
-|   ├── config/
-|   |   ├── roles.jsx
-|   |   ├── routes.jsx
-|   |   └── system.jsx 
+|   |   ├── controls
+|   |   |   ├── CButton.tsx
+|   |   |   ├── CSnackbar.tsx
+|   |   |   └── CTitle.tsx
+|   |   └── modals/
 |   ├── contexts/
 |   |   ├── app.jsx
 |   |   └── user.jsx
 |   ├── data/
-|   ├── documentation/
-|   ├── graphql/
-|   ├── layouts/
-|   |   ├── components/
-|   |   ├── documentation/
-|   |   ├── error/
-|   |   ├── login/
-|   |   ├── main/
-|   |   ├── index.jsx
-|   |   └── layouts.jsx
-|   ├── modals/
 |   ├── pages/
 |   |   ├── error/
 |   |   ├── general/
-|   |   ├── sample/
+|   |   ├── module/
+|   |   |   ├── search-user
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
 |   ├── semantic-ui/
 |   ├── styles/
+|   |   ├── components
+|   |   |   ├── controls
+|   |   |   └── general
+|   |   ├── globals
+|   |   └── index.scss
 |   ├── utils/
-|   |   ├── alert.jsx
-|   |   ├── api.jsx
-|   |   ├── debounce.jsx
-|   |   ├── helpers.jsx
-|   |   ├── history.jsx
-|   |   └── pusher.jsx
+|   |   ├── alert.ts
+|   |   ├── api.ts
+|   |   ├── debounce.ts
+|   |   ├── helpers.ts
+|   |   ├── history.ts
+|   |   └── pusher.ts
 |   ├── app.js
 |   └── index.js
 ├── .gitignore
