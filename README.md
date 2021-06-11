@@ -217,11 +217,11 @@ The variables should be aligned with the Semantic UI custom theming.
 |   ├── styles/
 |   |   ├── scss/
 |   |   |   ├── components/
-|   |   |   |   ├── layout-control/
-|   |   |   |   |   ├── index.scss
+|   |   |   |   ├── controls/
+|   |   |   |   |   ├── _csnackbar.scss
+|   |   |   |   |   └── index.scss
 |   |   |   |   └── index.scss
 |   |   |   ├── globals/
-|   |   |   |   ├── documentation.scss
 |   |   |   |   ├── general.scss
 |   |   |   |   ├── mixins.scss
 |   |   |   |   └── variables.scss
@@ -358,8 +358,8 @@ When creating new pages, you have to setup 2 files: the `index.jsx` which is the
 |   ├── pages/
 |   |   ├── module/
 |   |   |   ├── page-name/
-|   |   |   |   ├── index.jsx
-|   |   |   |   └── config.jsx
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
 ```
 
 1. Pages should be created in `src/pages` folder. 
@@ -456,7 +456,8 @@ When creating new component, it should be categorized by its function/ module.
 |   |   ├── controls/  
 |   |   ├── module/
 |   |   |   ├── component-name/
-|   |   |   |   └── index.jsx
+|   |   |   |   ├── interface.ts
+|   |   |   |   └── index.tsx
 ```
 
 1. Components should be created inside `src/components` folder.
