@@ -118,7 +118,6 @@ Once you have downloaded the archive and opened it, you will find the following 
 |   |   |   ├── search-user
 |   |   |   |   ├── interface.ts
 |   |   |   |   └── index.tsx
-|   ├── semantic-ui/
 |   ├── styles/
 |   |   ├── components
 |   |   |   ├── controls
@@ -137,8 +136,7 @@ Once you have downloaded the archive and opened it, you will find the following 
 ├── .gitignore
 ├── craco.config.js
 ├── cypress.json
-├── package.json
-└── README.md˛
+└── package.json
 ```
 
 ### III. Project Setup
