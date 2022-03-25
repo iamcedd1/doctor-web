@@ -1,11 +1,11 @@
-# MediLink Boilerplate
+# Boilerplate
 
 ## Table of Contents
 <a href="#getting-started">Getting Started</a> <br />
 I. <a href="#i-introduction">Introduction</a> <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="#installation">Installation</a> <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="#routing">Routing</a> <br />
-II. <a href="#ii-medilink-boilerplate-structure">MediLink Boilerplate Structure</a> <br />
+II. <a href="#ii-medilink-boilerplate-structure">Boilerplate Structure</a> <br />
 III. <a href="#iii-project-setup">Project Setup</a> <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a. <a href="#system-config">System Config</a> <br />
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;b. <a href="#system-roles">System Roles</a> <br />
@@ -30,7 +30,7 @@ VIII. <a href="#viii-build">Build</a> <br />
 
 ### I. Introduction
 
-To start using the MediLink Boilerplate, you will need to start from scratch using our template.
+To start using the Boilerplate, you will need to start from scratch using our template.
 
 #### `Installation`
 
@@ -42,7 +42,7 @@ npm install
 
 #### `Routing`
 
-MediLink Boilerplate uses react-router-config for routing configuration.
+Boilerplate uses react-router-config for routing configuration.
 
 `React Router Config` is a static route configuration helpers for React Router. With the introduction of React Router v4, there is no longer a centralized route configuration.
 
@@ -75,7 +75,7 @@ const routes = [
 ];
 ```
 
-### II. MediLink Boilerplate Structure
+### II. Boilerplate Structure
 
 Once you have downloaded the archive and opened it, you will find the following file structure:
 
@@ -141,7 +141,7 @@ Once you have downloaded the archive and opened it, you will find the following 
 
 ### III. Project Setup
 
-Learn how to use MediLink Boilerplate using routes, changing brand-colors, project defaults, and more.
+Learn how to use Boilerplate using routes, changing brand-colors, project defaults, and more.
 
 #### `System Config`
 
@@ -205,7 +205,7 @@ export default userRoutes;
 
 #### `Branding Colors and Styles`
 
-MediLink Boilerplate uses Semantic UI as CSS Framework. Combination of LESS and SCSS for styling. Semantic UI theming is applied for custom styles.
+Boilerplate uses Semantic UI as CSS Framework. Combination of LESS and SCSS for styling. Semantic UI theming is applied for custom styles.
 https://react.semantic-ui.com/theming/
 
 ##### `SCSS`
@@ -251,7 +251,7 @@ Guidelines on how to use the MediLink Boilerplate.
 
 #### `REST API`
 
-MediLink Boilerplate uses <a href="https://alligator.io/react/axios-react/">`Axios React`</a> for API Request.
+Boilerplate uses <a href="https://alligator.io/react/axios-react/">`Axios React`</a> for API Request.
 
 ``` javascript
 // UTILS
@@ -274,7 +274,7 @@ Note: We recommend using `res` as variable name to handle API request result.
 
 #### `GRAPHQL`
 
-MediLink Boilerplate uses <a href="https://www.apollographql.com/docs/react/">`Apollo Client`</a> for GraphQL Request.
+Boilerplate uses <a href="https://www.apollographql.com/docs/react/">`Apollo Client`</a> for GraphQL Request.
 It also uses <a href="https://www.npmjs.com/package/graphql.macro">`graphql.macro`</a> npm package.
 
 ``` javascript
@@ -482,11 +482,11 @@ export default ComponentName;
 
 #### `Helper Functions`
 
-MediLink Boilerplate has pre-defined functions that can be use throughout the system. You will find all the functions inside the `src/utils/helpers.jsx`.
+Boilerplate has pre-defined functions that can be use throughout the system. You will find all the functions inside the `src/utils/helpers.jsx`.
 
 #### `Alert`
 
-MediLink Boilerplate uses <a href="https://sweetalert2.github.io/">`SweetAlert2`</a> for displaying messages in the application.
+Boilerplate uses <a href="https://sweetalert2.github.io/">`SweetAlert2`</a> for displaying messages in the application.
 
 ``` jsx
 import { alertMessage } from "../../../utils/alert";
@@ -534,7 +534,7 @@ alertMessage.toastSuccess("LOA Approved!", () => {
 
 ### V. Testing
 
-MediLink Boilerplate uses Cypress for Test Driven Development and Automation Testing.
+Boilerplate uses Cypress for Test Driven Development and Automation Testing.
 
 ### VI. Practices and Code Review
 
@@ -547,7 +547,7 @@ sample-file/index.jsx
 2. Avoid Obvious Comments
 3. Use `DRY(Don't Repeat Yourself)` Principle and also known as `DIE: Duplication is Evil`.
 4. Use `reusable` and `dynamic` components.
-5. Uses `customized components` for `MediLink Automation Testing with Cypress` that follows Best Practices.
+5. Uses `customized components` for `Automation Testing with Cypress` that follows Best Practices.
 
 ``` javascript
 <TextBoxControl name="username" placeholder="Enter Username" label="Username" />
